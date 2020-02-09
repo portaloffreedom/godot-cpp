@@ -551,6 +551,7 @@ def generate_class_implementation(icalls, used_classes, c):
 
 
 def generate_icall_header(icalls):
+    icalls = sorted(list(icalls))
 
     source = []
     source.append("#ifndef GODOT_CPP__ICALLS_HPP")
@@ -559,7 +560,7 @@ def generate_icall_header(icalls):
     source.append("")
 
     source.append("#include <gdnative_api_struct.gen.h>")
-    source.append("#include <stdint.h>")
+    source.append("#include <cstdint>")
     source.append("")
 
     source.append("#include <core/GodotGlobal.hpp>")

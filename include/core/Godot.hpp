@@ -280,7 +280,7 @@ struct _PropertyGetFunc {
 
 template <class T, class P>
 struct _PropertyDefaultSetFunc {
-	P(T::*f);
+	P T::*f;
 	static void _wrapped_setter(godot_object *object, void *method_data, void *user_data, godot_variant *value) {
 		_PropertyDefaultSetFunc<T, P> *set_func = (_PropertyDefaultSetFunc<T, P> *)method_data;
 		T *obj = (T *)user_data;
@@ -293,7 +293,7 @@ struct _PropertyDefaultSetFunc {
 
 template <class T, class P>
 struct _PropertyDefaultGetFunc {
-	P(T::*f);
+	P T::*f;
 	static godot_variant _wrapped_getter(godot_object *object, void *method_data, void *user_data) {
 		_PropertyDefaultGetFunc<T, P> *get_func = (_PropertyDefaultGetFunc<T, P> *)method_data;
 		T *obj = (T *)user_data;
